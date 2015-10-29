@@ -15,12 +15,11 @@ RUN python2.7 get-pip.py
 # Install other Python modules
 RUN apt-get install -y build-essential pkg-config libpng-dev libfreetype6-dev
 
-# Add a user (creating home and specifying shell) and
-# use it when running the container
-RUN useradd --create-home --shell /bin/bash yy
-USER yy
-WORKDIR /home/yy
+# Install other dependencies
+RUN apt-get install -y git 
+RUN pip install paver
+RUN pip install tox
 
 # Add a yy storage directory
-RUN mkdir -p /home/yy/store
-ENV YY_STORES /home/yy/store
+RUN mkdir -p /data
+WORKDIR /data
