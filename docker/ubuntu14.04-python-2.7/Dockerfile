@@ -1,5 +1,7 @@
 FROM ubuntu:14.04
-`
+RUN apt-get update
+RUN apt-get install -y wget software-properties-common
+
 # Install Python
 RUN apt-get install -y python2.7 python2.7-dev
 
