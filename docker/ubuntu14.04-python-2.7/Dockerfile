@@ -13,13 +13,16 @@ RUN wget https://bootstrap.pypa.io/get-pip.py
 RUN python2.7 get-pip.py
 
 # Install other Python modules
-RUN apt-get install -y build-essential pkg-config libpng-dev libfreetype6-dev
+RUN apt-get install -y build-essential pkg-config libpng-dev libfreetype6-dev 
 
 # Install other dependencies
 RUN apt-get install -y git 
-RUN pip install paver
-RUN pip install tox
+RUN pip install paver tox pytest-cov
 
-# Add a yy storage directory
+# create a symlink for python
+
+RUN ln -s /usr/bin/python2.7 /usr/bin/python
+
+# Add a data directory
 RUN mkdir -p /data
 WORKDIR /data
